@@ -2,7 +2,7 @@ package com.mycompany.app;
 
 import java.util.function.Function;
 
-public interface IUserInterface {
+public interface UserInterface {
     public void showMessage(String message);
 
     public int readInteger(String message);

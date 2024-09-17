@@ -3,12 +3,12 @@ package com.mycompany.app;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class ConsoleUserInterface implements IUserInterface {
-    public ConsoleUserInterface(IConsoleInterface consoleInterface) {
+public class ConsoleUserInterface implements UserInterface {
+    public ConsoleUserInterface(ConsoleInterfaceImpl consoleInterface) {
         this.consoleInterface = consoleInterface;
     }
 
-    private final IConsoleInterface consoleInterface;
+    private final ConsoleInterface consoleInterface;
 
     public int readInteger(String message) {
         return readInteger(message, r -> true);

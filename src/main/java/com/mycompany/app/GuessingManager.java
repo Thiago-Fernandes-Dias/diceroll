@@ -1,42 +1,37 @@
 package com.mycompany.app;
 
-public class GuessingManager
-{
+public class GuessingManager {
     private final int defaultAttempts = 3;
 
-    private final DiceRoller _diceRoller;
-    private final IUserInterface _userInterface;
-    private int _attempts;
+    private final DiceRoller diceRoller;
+    private final UserInterface userInterface;
+    private int attempts;
 
-    public GuessingManager(int attempts, DiceRoller diceRoller, IUserInterface userInterface)
-    {
-        this._diceRoller = diceRoller;
-        this._userInterface = userInterface;
-        if (attempts <= 0)
-        {
-            _userInterface.showMessage(String.format(AppMessages.InvalidQtyOfAttemps, _defaultAttempts));
-            _attempts = defaultAttempts;
+    public GuessingManager(int attempts, DiceRoller diceRoller, UserInterface userInterface) {
+        this.diceRoller = diceRoller;
+        this.userInterface = userInterface;
+        if (attempts <= 0) {
+            userInterface.showMessage(String.format(Messages.invalidQtyOfAttempts, defaultAttempts));
+            this.attempts = defaultAttempts;
         }
-        else
-        {
-            _attempts = attempts;
+        else {
+            this.attempts = attempts;
         }
     }
 
-    public async Task Run()
-    {
-        _diceRoller.RollDice();
-        _userInterface.ShowMessage(string.Format(AppMessages.DiceRolled, _attempts));
-        for (int i = 0; i < _attempts; i++)
+    public void run() {
+        diceRoller.rollDice();
+        userInterface.showMessage(String.format(Messages.diceRolled, attempts));
+        for (int i = 0; i < attempts; i++)
         {
-            var userChoice = _userInterface.ReadInteger(AppMessages.GuessTheNumber);
-            if (userChoice == _diceRoller.RollResult)
+            int userChoice = userInterface.readInteger(Messages.guessTheNumber);
+            if (userChoice == diceRoller.getRollResult())
             {
-                _userInterface.ShowMessage(AppMessages.Win);
+                userInterface.showMessage(Messages.win);
                 return;
             }
-            _userInterface.ShowMessage(AppMessages.WrongChoice);
+            userInterface.showMessage(Messages.wrongChoice);
         }
-        _userInterface.ShowMessage(AppMessages.Lose);
+        userInterface.showMessage(Messages.lose);
     }
 }

@@ -7,9 +7,9 @@ import java.util.Random;
  */
 public class App {
     public static void main(String[] args) {
-        DiceRollerInterface diceRoller = new DiceRoller(new Random(), 6);
-        IUserInterface userInterface = new ConsoleUserInterface(new ConsoleInterface());
-        GuessingManager guessingManager = new(3, diceRoller, userInterface);
-        guessingManager.Run();
+        DiceRoller diceRoller = new DiceRollerImpl(new Random(), 6);
+        UserInterface userInterface = new ConsoleUserInterface(new ConsoleInterfaceImpl());
+        GuessingManager guessingManager = new GuessingManager(3, diceRoller, userInterface);
+        guessingManager.run();
     }
 }
