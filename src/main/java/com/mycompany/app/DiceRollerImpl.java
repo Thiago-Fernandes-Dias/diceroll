@@ -9,7 +9,7 @@ public class DiceRollerImpl implements DiceRoller {
     public DiceRollerImpl(Random random, int sides) throws IllegalArgumentException {
         this.random = random;
         if (sides < 2) {
-            throw new IllegalArgumentException("Invalid qty. of sides. It must be bigger than 2");
+            throw new IllegalArgumentException("Invalid quantity. of sides. It must be bigger than 2");
         }
         this.sides = sides;
     }
